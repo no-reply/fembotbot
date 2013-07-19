@@ -1,0 +1,26 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.5)
+    chatterbot (0.6.5)
+      launchy (>= 2.1.2)
+      oauth
+      twitter (>= 4.4.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
+    launchy (2.3.0)
+      addressable (~> 2.3)
+    multi_json (1.7.7)
+    multipart-post (1.2.0)
+    oauth (0.4.7)
+    simple_oauth (0.2.0)
+    twitter (4.8.1)
+      faraday (~> 0.8, < 0.10)
+      multi_json (~> 1.0)
+      simple_oauth (~> 0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chatterbot
