@@ -3,7 +3,12 @@ responses:
   "That language is hurtful to people I care about.": 
     - '#uglygirlsarenotallowed'  
     - '#slut'
+    - '#ihatefemaleswho'
+    - '#mensrights'
+    - '#fatbitch'
+    - '#bitches'
   "test":
     - '#uglygirlsarenotallowed'
 
 blacklist_text: "not a feminist"
+
