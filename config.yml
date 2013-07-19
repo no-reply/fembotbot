@@ -1,3 +1,7 @@
 ---
-hashtags:
-  - '#uglygirlsarenotallowed': "Try being respectful to women"
+responses:
+  "That language is hurtful to people I care about.": 
+    - '#uglygirlsarenotallowed'  
+    - '#slut'
+  "test":
+    - '#uglygirlsarenotallowed'
