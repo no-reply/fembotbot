@@ -6,4 +6,4 @@ gem 'chatterbot'
 gem 'rspec'
 
 # for code style validation
-gem 'rubocop'
+# gem 'rubocop'
