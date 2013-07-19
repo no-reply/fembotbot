@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'chatterbot'
+gem 'redis'
 
 # for testing
 gem 'rspec'
