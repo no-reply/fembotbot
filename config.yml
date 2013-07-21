@@ -4,11 +4,11 @@ responses:
     - '#uglygirlsarenotallowed'  
     - '#slut'
     - '#ihatefemaleswho'
-    - '#mensrights'
     - '#fatbitch'
     - '#bitches'
-  "test":
-    - '#uglygirlsarenotallowed'
+#     - '#mensrights'
+  "Thanks for being an awesome feminist!":
+    - '#fembottest'
 
 blacklist_text: "@fembotbot i'm sorry for the language I used. it was hurtful to others, and i'm ashamed. i'm educating myself on being a better human being."
 

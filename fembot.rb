@@ -23,28 +23,19 @@ end
 # create a since_id if none exists.
 # this keeps us from resending old tweets
 # if the bot goes up on another system
-if redis.get('since').nil?
-  # searching #fembot is a hurried hack
-  search('#fembot') do |tweet| 
-    redis.set 'since', tweet.id
-  end
-end
+# if redis.get('since').nil?
+#   # searching #fembot is a hurried hack
+#   search('#fembot') do |tweet| 
+#     redis.set 'since', tweet.id
+#   end
+# end
 
-since_id = redis.get('since') 
+# 
+
+puts redis.get('since') 
 
 loop do
   begin
-    for hashtag in tags.keys
-      search(hashtag) do |tweet|
-        redis.set tweet.from_user, [hashtag].to_json if redis.get(tweet.from_user).nil?
-        reply "@#{tweet_user(tweet)} #{tags[hashtag][0]}", tweet unless JSON.parse(redis.get(tweet.from_user)).include?(hashtag)
-        redis.set 'since', tweet.id
-        user_tags = JSON.parse(redis.get(tweet.from_user)) << hashtag
-        redis.set tweet.from_user, user_tags.to_json
-        redis.incr(hashtag)
-      end
-    end
-
     replies do |tweet|
       if tweet.text.downcase.include?(conf['blacklist_text'])
         blklist << tweet.from_user
@@ -53,7 +44,25 @@ loop do
       end
       reply "#USER# I'm a feminist robot!", tweet
     end
-    sleep 90
+
+    for hashtag in tags.keys
+      since_id=(redis.get('since'))
+      search(hashtag) do |tweet|
+        redis.set tweet.from_user, [hashtag].to_json if redis.get(tweet.from_user).nil?
+        reply "#{tweet_user(tweet)} #{tags[hashtag][0]}", tweet unless JSON.parse(redis.get(tweet.from_user)).include?(hashtag)
+        puts 'tweeted at ' + tweet.from_user + ' for saying ' + hashtag unless JSON.parse(redis.get(tweet.from_user)).include?(hashtag)
+        redis.set 'since', tweet.id
+        puts redis.get('since') 
+        user_tags = JSON.parse(redis.get(tweet.from_user)) << hashtag
+        redis.set tweet.from_user, user_tags.to_json
+        redis.incr(hashtag)
+        break
+      end
+    end
+    
+    puts '.'
+    redis.save
+    sleep 90 * (Random.rand(9) + 1)
   rescue Twitter::Error::TooManyRequests
     sleep 1000
   end
